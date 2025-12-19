@@ -1,0 +1,71 @@
+<%- include('header') %>
+<%- include('message') %>
+<div class="container mt-5">
+  <div class="card rounded-3 shadow-sm" style="background-color:#B8D8D8;">
+    <div class="card-body">
+      <h5 class="card-title mb-3">Lépések grafikon</h5>
+      <canvas id="stepsChart" height="200"></canvas>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('stepsChart').getContext('2d');
+
+  const labels = <%- JSON.stringify(results.map(r => r.date)) %>;
+  const data = <%- JSON.stringify(results.map(r => r.steps)) %>;
+
+  const stepsChart = new Chart(ctx, {
+    type: 'line', // vonal / pont grafikon
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Lépések',
+        data: data,
+        backgroundColor: 'rgba(122, 158, 159, 0.3)',
+        borderColor: '#4F6367',
+        pointBackgroundColor: '#7A9E9F',
+        pointBorderColor: '#4F6367',
+        pointRadius: 6,
+        pointHoverRadius: 8,
+        fill: true,
+        tension: 0.3
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false
+        },
+        tooltip: {
+          mode: 'index',
+          intersect: false
+        }
+      },
+      scales: {
+        x: {
+          grid: {
+            color: 'rgba(79, 99, 103, 0.1)'
+          },
+          ticks: {
+            color: '#4F6367'
+          }
+        },
+        y: {
+          grid: {
+            color: 'rgba(79, 99, 103, 0.1)'
+          },
+          ticks: {
+            color: '#4F6367',
+            beginAtZero: true
+          }
+        }
+      }
+    }
+  });
+</script>
+
+
+<%- include('footer') %>

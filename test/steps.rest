@@ -1,0 +1,9 @@
+@host = http://localhost
+@port = 3000
+@url = {{host}}:{{port}}
+
+
+### Get all steps
+
+GET {{url}}/steps
+Content-Type: application/json

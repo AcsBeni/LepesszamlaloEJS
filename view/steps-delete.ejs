@@ -1,0 +1,22 @@
+<%- include('header') %>
+<div class="container">
+<h3>Lépés törlése</h3>
+<p>Biztosan törlöd a kiválasztott lépést?</p>
+  <form action="/steps/delete/<%=id%>" method="POST">
+     <div class="mb-3">
+      <label for="date" class="form-label">Dátum</label>
+      <input disabled type="date" class="form-control" id="date" name="date" value="<%=data.date%>" required>
+    </div>
+    <div class="mb-3">
+      <label for="steps" class="form-label">Lépés darab</label>
+      <input disabled type="number" class="form-control" id="steps" name="steps" value="<%=data.steps%>" required>
+    </div>
+    <span>
+        <a href="/steps" class="btn btn-secondary">Vissza</a>
+        <input type="submit" value="Delete" name="" class="btn btn-danger">
+    </span>
+  </form>
+
+</div>
+ 
+<%- include('footer') %>

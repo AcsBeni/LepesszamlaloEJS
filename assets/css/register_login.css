@@ -1,0 +1,59 @@
+.btn:hover {
+  background-color: #7A9E9F !important;
+}
+.auth-wrapper {
+  min-height: 70vh;
+}
+.auth-card {
+  background-color: #B8D8D8;
+  border: none;
+  border-radius: 1.25rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+.auth-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #7A9E9F;
+  margin: 0 auto;
+}
+.auth-subtitle {
+  color: #4F6367;
+  font-size: 0.95rem;
+}
+.auth-input {
+  background-color: #EEF6F6;
+  border: none;
+  border-radius: 0.75rem;
+}
+
+.auth-input:focus {
+  box-shadow: 0 0 0 0.15rem rgba(79, 99, 103, 0.25);
+}
+.auth-btn-primary {
+  background-color: #4F6367;
+  color: #fff;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+}
+
+.auth-btn-primary:hover {
+  background-color: #7A9E9F;
+  color: #fff;
+}
+
+.auth-btn-secondary {
+  background-color: transparent;
+  color: #4F6367;
+  border: 2px solid #4F6367;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+}
+
+.auth-btn-secondary:hover {
+  background-color: #4F6367;
+  color: #fff;
+}
+.form-floating > label {
+  color: #4F6367;
+}

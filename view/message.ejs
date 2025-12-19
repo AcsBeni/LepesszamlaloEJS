@@ -1,0 +1,7 @@
+<% if (session.error) { %>
+    <div class="alert alert-<%= session.severity %>" role="alert">
+        <%= session.error %>!
+        <button type="button" class="btn-close text-end" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    
+<% } %>

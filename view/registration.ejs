@@ -1,0 +1,49 @@
+<%- include('header') %>
+<%- include('message') %>
+
+<div class="row justify-content-center align-items-center auth-wrapper">
+  <div class="col-md-8 col-lg-6 col-xl-4">
+
+    <div class="auth-card">
+      <div class="card-body p-4 p-md-5">
+
+        <div class="text-center mb-4">
+          <div class="auth-icon mb-3"></div>
+          <p class="auth-subtitle">
+            Hozd létre a fiókodat és kezdd el még ma!
+          </p>
+        </div>
+
+        <form action="/registration" method="post">
+
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control auth-input" id="email" name="email" placeholder="Email" required>
+            <label for="email">Email</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control auth-input" id="name" name="name" placeholder="Név" required>
+            <label for="name">Név</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control auth-input" id="password" name="password" placeholder="Jelszó" required>
+            <label for="password">Jelszó</label>
+          </div>
+          <div class="form-floating mb-4">
+            <input type="password" class="form-control auth-input" id="passwordConfirm"name="passwordConfirm" placeholder="Jelszó megerősítése" required>
+            <label for="passwordConfirm">Jelszó megerősítése</label>
+          </div>
+          <div class="d-grid gap-2">
+            <button class="btn auth-btn-primary" type="submit">
+                Regisztráció
+            </button>
+            <a href="/login" class="btn auth-btn-secondary">
+              Már van fiókom
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('footer') %>

@@ -1,0 +1,72 @@
+@host = http://localhost
+@port = 3000
+@url = {{host}}:{{port}}
+
+
+### Get all users
+
+GET {{url}}/users
+Content-Type: application/json
+
+
+### Get user by ID
+GET {{url}}/users/2
+Content-Type: application/json
+
+###Register
+POST {{url}}/users
+Content-Type: application/json
+
+{
+    "name": "teszt", 
+    "password": "123", 
+    "email": "Ember@gmail.com", 
+    "role": "admin"
+   
+}
+
+###Login user
+POST {{url}}/users/login
+Content-Type: application/json
+
+{
+    
+    "email": "Embereke@gmail.com",
+    "password": "123"
+    
+}
+
+###Update one user
+PATCH {{url}}/users/8
+Content-Type: application/json
+
+{
+    "name": "embe", 
+    "password": "123", 
+    "email": "Ember@gmail.com", 
+    "status": 0, 
+    "role": "user"
+}
+
+### Delete user by ID
+DELETE {{url}}/users/7
+
+###Update user pass by id
+PATCH {{url}}/users/password/5
+Content-Type: application/json
+
+{
+    "oldpass":"Secure123",
+    "password": "123"
+}
+
+###Update profile email and name
+PATCH {{url}}/users/profile/8
+Content-Type: application/json
+
+{
+    "name": "ember", 
+    "email": "ember@gmail.com"
+}
+
+

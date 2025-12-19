@@ -1,0 +1,18 @@
+<%- include('header') %>
+<div class="container">
+  <h3>Steps hozzáadása</h3>
+  <form action="/steps/new" method="POST">
+    <div class="mb-3">
+      <label for="date" class="form-label">Dátum</label>
+      <input type="date" class="form-control" id="date" name="date" value="<%=data.date%>" required>
+    </div>
+    <div class="mb-3">
+      <label for="steps" class="form-label">Lépés darab</label>
+      <input type="number" class="form-control" id="steps" name="steps" value="<%=data.steps%>" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Mentés</button>
+  </form>
+</div>
+
+ 
+<%- include('footer') %>

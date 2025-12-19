@@ -1,0 +1,89 @@
+<%- include('header') %>
+<%- include('message') %>
+
+<div class="container mt-5">
+  <div class="row g-4">
+
+    <!-- BAL OSZLOP – PROFIL ADATOK -->
+    <div class="col-md-6">
+      <h5 class="mb-3">Profil adatok</h5>
+
+      <form action="/users/profile/<%=user.id%>" method="post">
+
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control auth-input"
+            id="name"
+            name="name"
+            placeholder="Név"
+            value="<%= user.name %>"
+            required>
+          <label for="name">Név</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input
+            type="email"
+            class="form-control auth-input"
+            id="email"
+            name="email"
+            placeholder="Email"
+            value="<%= user.email %>"
+            required>
+          <label for="email">Email</label>
+        </div>
+
+        <button class="btn auth-btn-primary w-100">
+          Adatok mentése
+        </button>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <h5 class="mb-3">Jelszó módosítás</h5>
+
+      <form action="/users/password/<%= user.id %>" method="post">
+
+        <div class="form-floating mb-3">
+          <input
+            type="password"
+            class="form-control auth-input"
+            id="oldPassword"
+            name="oldPassword"
+            placeholder="Régi jelszó"
+            required>
+          <label for="oldPassword">Régi jelszó</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input
+            type="password"
+            class="form-control auth-input"
+            id="newPassword"
+            name="newPassword"
+            placeholder="Új jelszó"
+            required>
+          <label for="newPassword">Új jelszó</label>
+        </div>
+
+        <div class="form-floating mb-4">
+          <input
+            type="password"
+            class="form-control auth-input"
+            id="confirmPassword"
+            name="confirmPassword"
+            placeholder="Új jelszó megerősítése"
+            required>
+          <label for="confirmPassword">Új jelszó megerősítése</label>
+        </div>
+
+        <button class="btn btn-warning w-100">
+          Jelszó módosítása
+        </button>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<%- include('footer') %>

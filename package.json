@@ -1,0 +1,35 @@
+{
+  "name": "lepesszamlaloejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AcsBeni/LepesszamlaloEJS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AcsBeni/LepesszamlaloEJS/issues"
+  },
+  "homepage": "https://github.com/AcsBeni/LepesszamlaloEJS#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "crypto-js": "^4.2.0",
+    "dotenv": "^17.2.3",
+    "ejs": "^3.1.10",
+    "express": "^5.2.1",
+    "express-session": "^1.18.2",
+    "fs": "^0.0.1-security",
+    "multer": "^2.0.2",
+    "mysql": "^2.18.1",
+    "nodemailer": "^7.0.11",
+    "nodemon": "^3.1.11",
+    "winston": "^3.19.0"
+  }
+}

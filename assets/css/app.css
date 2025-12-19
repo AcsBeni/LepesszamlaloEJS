@@ -1,0 +1,28 @@
+body{
+    background-color: #e3f0f0;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main.flex-fill {
+  flex: 1 0 auto; 
+}
+
+footer {
+ 
+  padding: 1rem 0;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+header {
+  width: 100%;
+  flex-shrink: 0;
+}
+.page-wrapper > footer {
+  margin-top: auto;
+}

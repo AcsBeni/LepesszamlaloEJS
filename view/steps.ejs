@@ -1,0 +1,50 @@
+<%- include('header') %>
+<%- include('message') %>
+
+<div class="container mt-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="page-title">Lépések</h4>
+    <a href="/steps/new" class="btn btn-primary btn-sm">Új lépés hozzáadása</a>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-hover align-middle steps-table rounded-3 shadow-sm">
+      <thead class="steps-thead">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Dátum</th>
+          <th scope="col">Lépés darab</th>
+          <th scope="col" class="text-end">Műveletek</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (results.length === 0) { %>
+          <tr>
+            <td colspan="4" class="text-center py-3">Nincsenek lépésadatok</td>
+          </tr>
+        <% } %>
+        <% results.forEach((item, index) => { %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= item.date %></td>
+            <td><%= item.steps %></td>
+            <td class="text-end">
+              <a href="/steps/edit/<%= item.id %>" class="btn btn-warning btn-sm me-1">Szerkesztés</a>
+              <a href="/steps/delete/<%= item.id %>" class="btn btn-danger btn-sm">Törlés</a>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4" class="text-center py-2">
+            Összesen <strong><%= results.length %></strong> lépésadat
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+
+<%- include('footer') %>
