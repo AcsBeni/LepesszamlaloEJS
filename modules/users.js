@@ -28,7 +28,7 @@ router.patch("/:id", (req, res)=>{
       res.status(200).json(results)
     },req);
 })
-//user jelszó frissítése id alapján(Nagyon lassan frissül ez az npm, nem tudom miért, de nagyon sok időt vett el, az hogy a semmit debuggoltam)
+//user jelszó frissítése id alapján
 router.post("/password/:id", (req, res) => {
   const ID = req.params.id;
   const { oldPassword, newPassword, confirmPassword } = req.body;
