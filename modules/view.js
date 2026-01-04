@@ -3,11 +3,19 @@ const router = express.Router();
 const {query} = require('../utils/database');
 var SHA1 = require("crypto-js/sha1");
 ejs = require('ejs');
+const passwordregex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+emailReminder = "";
+userNameReminder = "";
 
- 
+
+//Login redirect
+router.get("", (req, res) => {
+  res.render('login');
+});
 // login form
 router.get("/login", (req, res) => {
   res.render('login');
+  emailReminder = "";
 });
 //login user
 router.post("/login", (req, res) => {
@@ -17,11 +25,13 @@ router.post("/login", (req, res) => {
       if (error) {
         req.session && (req.session.error = 'Hiba történt a bejelentkezéskor!');
         req.session && (req.session.severity = 'danger');
+        emailReminder = email;
         return res.redirect('/login')
       }
       if (results.length === 0) {
         req.session && (req.session.error = 'Hibás email vagy jelszó!');
         req.session && (req.session.severity = 'danger');
+        emailReminder = email;
         return res.redirect('/login')
       }
       const loggedUser = results[0];
@@ -38,24 +48,37 @@ router.post("/login", (req, res) => {
     },
     req);
 })
+
 // registration form
 router.get("/registration", (req, res) => {
   res.render('registration');
+  emailReminder = "";
+  userNameReminder = "";
 });
 //Registration
 router.post("/registration", (req, res) => {
   const { name, password, email } = req.body;
-
+  if (!passwordregex.test(password)) {
+    req.session && (req.session.error = 'A jelszó nem biztonságos!');
+    req.session && (req.session.severity = 'danger');
+    emailReminder = email;
+    userNameReminder = name;
+    return res.redirect('/registration');
+  }
   query(`SELECT * FROM users WHERE email = ?`, [email], (error, results) => {
     if (error) {
       req.session && (req.session.error = 'Adatbázis hiba a regisztrációnál!');
       req.session && (req.session.severity = 'danger');
+      emailReminder = email;
+      userNameReminder = name;
       return res.redirect('/registration');
     }
 
     if (results.length > 0) {
       req.session && (req.session.error = 'Ez az e-mail cím már létezik!');
       req.session && (req.session.severity = 'danger');
+      emailReminder = email;
+      userNameReminder = name;
       return res.redirect('/registration');
     }
     query(
@@ -65,6 +88,8 @@ router.post("/registration", (req, res) => {
         if (insertError) {
           req.session && (req.session.error = 'Hiba történt a regisztrációnál!');
           req.session && (req.session.severity = 'danger');
+          emailReminder = email;
+          userNameReminder = name;
           return res.redirect('/registration');
         }
         req.session && (req.session.error = 'Sikeres regisztráció!');
@@ -74,6 +99,7 @@ router.post("/registration", (req, res) => {
     );
   });
 });
+
 // profile
 router.get("/profile", (req, res) => {
     query('SELECT * FROM users WHERE id = ?', [req.session.loggedUser.id], (err, results) => {
@@ -92,6 +118,7 @@ router.get('/logout', (req, res) => {
     res.redirect('/login');
   });
 });
+
 //dashboard
 router.get('/dashboard', (req, res) => {
   if (!req.session.loggedUser) {

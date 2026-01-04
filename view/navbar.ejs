@@ -1,13 +1,11 @@
 <nav class="navbar navbar-expand-lg site-navbar">
   <div class="container position-relative">
 
-    <!-- Brand (Left) -->
-    <a class="navbar-brand site-brand" href="/home">
+    <a class="navbar-brand site-brand" href=<%= session.loggedUser ? "/dashboard" : "/login" %>>
       <b> Lépésszámláló</b>
       <span><%= session.loggedUser ? session.loggedUser.name : "Nincs bejelentkezve" %></span>
     </a>
 
-    <!-- Mobile Toggler -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>

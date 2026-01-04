@@ -3,7 +3,7 @@ const router = express.Router();
 const ejs = require('ejs');
 const {query} = require('../utils/database');
 var SHA1 = require("crypto-js/sha1");
-
+const passwordregex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
 //userek lehívása
 router.get("/", (req, res)=>{
@@ -48,6 +48,11 @@ router.post("/password/:id", (req, res) => {
   if (oldPassword === newPassword) {
     req.session.error = "Az új jelszó nem egyezhet meg a régivel!";
     req.session.severity = "danger";
+    return res.redirect('/profile');
+  }
+  if (!passwordregex.test(password)) {
+    req.session && (req.session.error = 'A jelszó nem biztonságos!');
+    req.session && (req.session.severity = 'danger');
     return res.redirect('/profile');
   }
   query(

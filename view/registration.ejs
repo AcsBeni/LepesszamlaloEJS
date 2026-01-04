@@ -17,11 +17,11 @@
         <form action="/registration" method="post">
 
           <div class="form-floating mb-3">
-            <input type="email" class="form-control auth-input" id="email" name="email" placeholder="Email" required>
+            <input type="email" class="form-control auth-input" id="email" name="email" placeholder="Email" value="<%= emailReminder %>" required>
             <label for="email">Email</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control auth-input" id="name" name="name" placeholder="Név" required>
+            <input type="text" class="form-control auth-input" id="name" name="name" placeholder="Név" value="<%= userNameReminder %>" required>
             <label for="name">Név</label>
           </div>
           <div class="form-floating mb-3">
